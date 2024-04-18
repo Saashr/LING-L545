@@ -1,0 +1,54 @@
+Multichar_Symbols 
+%<N%> %<Plu%> %<Nom%> %<Acc%> %<Dat%> %<Loc%> %<Gen%> %<Abl%> %<Px1Sg%> %<Px2Sg%> %<Px3Sg%> %<Px1Pl%> %<Px2Pl%> %<Px3Pl%>
+
+%>
+
+LEXICON Root
+Nouns ;
+
+LEXICON Nouns
+ev:ev N ;
+kitap:kitap N ;
+köpek:köpek N ;
+çocuk:çocuk N ;
+araba:araba N ;
+ağaç:ağaç N ;
+deniz:deniz N ;
+kedi:kedi N ;
+yol:yol N ;
+elma:elma N ;
+sandalye:sandalye N ;
+okul:okul N ;
+bilgisayar:bilgisayar N ;
+gözlük:gözlük N ;
+çiçek:çiçek N ;
+şehir: şehir N ;
+nehir:nehir N ;
+televizyon:televizyon N ;
+telefon: telefon N ;
+pencere:pencere N ;
+
+LEXICON N
+Poss ;
+%<Plu%>:%>l{A}r Poss ;
+
+LEXICON Poss
+CASE ;
+%<Px1Sg%>:%>%{I%}%{m%} CASE ;
+%<Px2Sg%>:%>%{I%}%{n%} CASE;
+%<Px3Sg%>:%>%{I%} CASE;
+%<Px1Pl%>:%>%{I%}m%{I%}z CASE;
+%<Px2Pl%>:%>%{I%}n%{I%}z CASE;
+%<Px3Pl%>:%>%l%{A%}ri CASE;
+
+LEXICON CASE
+%<Nom%>: # ;
+%<Acc%>:%>%{I%} #;
+%<Dat%>:%>%{N%}%{A%} #;
+%<Loc%>:%>%{D%}%{A%} #;
+%<Abl%>:%>%{D%}%{A%}%{N%} #;
+%<Gen%>:%>%{I%}%{N%} #;
+
+
+
+END
