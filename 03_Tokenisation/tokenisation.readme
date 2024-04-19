@@ -7,7 +7,7 @@ The program implements a left-to-right longest-match algorithm for word segmenta
 
 
 cat original.test.txt | python3 maxmatch.py dictionary.txt > output.test.txt
-python3 evaluate2.py tokenised.test.txt output.test.txt
+python3 evaluate.py tokenised.test.txt output.test.txt
 
 
 #All these above mentioned files are uploaded in the repo.
