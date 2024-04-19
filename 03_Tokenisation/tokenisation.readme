@@ -1,0 +1,32 @@
+# Tokenisation for Thai
+
+
+The program implements a left-to-right longest-match algorithm for word segmentation. 
+
+#The program can be run by using follwing code:
+
+
+cat original.test.txt | python3 maxmatch.py dictionary.txt > output.test.txt
+python3 evaluate2.py tokenised.test.txt output.test.txt
+
+
+#All these above mentioned files are uploaded in the repo.
+
+Example 1:
+
+
+WER: 21.74%
+REF: ธรรมเนียม ว่า ไว้ ว่า รูปแบบ ถูก กำหนด อย่างตั้งใจ        เนื่อง จาก มี ชาว ยิว ที่ เปลี่ยน ศาสนา เป็น จำนวน มาก ที่ อาศัย ใน ปัลมา
+HYP: ธรรมเนียม ว่า ไว้ ว่า รูปแบบ ถูก กำหนด อย่าง       ตั้งใจ เนื่อง จาก มี ชาว ยิว ที่ เปลี่ยน ศาสนา เป็น จำนวน มาก ที่ อาศัย ใน ป     ัล มา
+EVA:                                        S           I                                                                          S     I  I
+
+
+
+WER: 16.00%
+REF: เมื่อ พวก เขา กลับ มา ก็ รู้สึก มี ความสุข กับ ความคิด ที่ จะ ได้ ใช้ ชีวิต ใน อเมริกาใต้ ห่างไกล จาก ปัญหา ของ เบลเยียม         หลัง สงคราม
+HYP: เมื่อ พวก เขา กลับ มา ก็ รู้สึก มี ความสุข กับ ความคิด ที่ จะ ได้ ใช้ ชีวิต ใน อเมริกาใต้ ห่างไกล จาก ปัญหา ของ เบล      เ ยี ยม หลัง สงคราม
+EVA:                                                                                                                 S        I I  I
+
+
+
+
