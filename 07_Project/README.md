@@ -31,4 +31,4 @@ MACHamp:  python3 simple_eval.py pa-ud-test.conllu pa-upos-predictions-test.out
 
 The results show f1, precision , recall score and confusion matrix for all three taggers. 
 
-##link to the project github repor: https://github.com/Saashr/POSTaggerSurvey-Shahmukhi/tree/master
+## link to the project github repo: https://github.com/Saashr/POSTaggerSurvey-Shahmukhi/tree/master
