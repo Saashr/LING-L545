@@ -27,11 +27,25 @@ MACHamp: https://github.com/machamp-nlp/machamp
 ## Usage: 
 The command to run the taggers are as follows: 
 
-Perceptron: python3 simple_eval.py pa-ud-test.conllu output.conllu 
+Perceptron: 
 
-CRF: python3 simple_eval.py pa-ud-test.conllu crf_pos_predictions.conllu
+```
+python3 simple_eval.py pa-ud-test.conllu output.conllu
 
-MACHamp:  python3 simple_eval.py pa-ud-test.conllu pa-upos-predictions-test.out 
+```
+
+CRF: 
+```
+python3 simple_eval.py pa-ud-test.conllu crf_pos_predictions.conllu
+
+```
+
+MACHamp:  
+
+```
+python3 simple_eval.py pa-ud-test.conllu pa-upos-predictions-test.out
+
+```
 
 
 
