@@ -1,63 +1,49 @@
-DELIMITERS = "." , "!" , "?" ;  
+DELIMITERS = "." ;
 
-LIST Pr = pr ;                  
-LIST Cm = cm ;                  
-LIST Num = num ;               
-LIST Abbr = abbr ;              
-
-LIST V = vblex ;                
-LIST N = n ;                   
-LIST A = adj ;                  
-LIST Sg = sg ;                  
-LIST Prn = prn ;              
-LIST Det = det ;                
-LIST Def = def ;                
-LIST Adv = adv ;                
-LIST Pl = pl ;                
-LIST Past = past ;              
-LIST PP = pp ;                 
+LIST Adj = adj ;
+LIST Unlike = "unlike" ;
+LIST Cnjadv = cnjadv ; 
+LIST Cm = cm ; 
+LIST Sent = sent ;
+LIST V = vblex ; 
+LIST Past = past ;
+LIST Det = det ;
+LIST N = n ;
+LIST Pl = pl ;
 LIST Pres = pres ;
-LIST Cnjadv = Cnjadv ;            
-
-LIST Sg1 = (p1 sg) ;         
-LIST Sg2 = (p2 sg) ;           
-LIST Sg3 = (p3 sg) ;        
-LIST Pl1 = (p1 pl) ;        
-LIST Pl2 = (p2 pl) ;           
-LIST Pl3 = (p3 pl) ;          
-
-LIST Have = "have" ;           
-LIST By = "by" ;              
-LIST Be = "be" ;             
-LIST Modal = "can", "would", "could", "should" ;
-
-LIST Ind = ind ;               
-LIST Qnt = qnt ;                
-
-LIST pprs = pprs ;
-LIST subs = subs ;
-
-LIST NP = np ;                  
-LIST Ant = ant ;   
-LIST CnjCoo = "and", "but", "or";  # 
-LIST CnjSub = "because", "that", "if";
-
-LIST Ger = ger ;                
-SET Finite = Past | Pres ;      
+LIST Def = def ;
+LIST Sp = sp ;
+LIST Pp = pp ;
+LIST Pr = pr ;
+LIST Ger = ger ;
+LIST Np = np ;
+LIST Ant = ant ;
+LIST M = m ;
+LIST Sg = sg ;
+LIST Lpar = lpar ;
+LIST Cnjcoo = cnjcoo ;
+LIST Adv = adv ;
 
 
-LIST GerundVerbs = "talk" "report" "write" ;
+SECTION
 
-SELECT V + Ger IF (0 GerundVerbs) (-1* Pr) (-2* NP + Ant) ;
-SELECT V + Ger IF (0 GerundVerbs) (1 Pr) (2 Det) ;           
-SELECT V + Ger IF (0 GerundVerbs) (-1* CnjCoo) (1 CnjSub) ;
+REMOVE Adj IF (0 Unlike) (1 Np + Ant) ; 
+# REMOVES Adj interpreation of "Unlike" in "train.txt"
+
+REMOVE Cnjadv IF (NOT -1 Cm OR Sent) ; 
+#REMOVES Cnjadv interpreation of "for" in train.txt
+
+SELECT Pr IF (-1 N + Sg OR V + Pp OR Cm) (1 Det + Def + Sp OR Np + Ant) ;
+#SELECTS "by" as preposition in "train.txt"
+
+REMOVE V + Past IF (-2C Det + Def + Sp) (-1C N + Pl) ;
+# REMOVES Vblex past interpreation of "described" in train.txt and "arrived" in dev.txt
+
+SELECT V + Pp IF (-1 N + Pl) (1 Cm OR Pr ) ;
+
+SELECT V + Ger IF (-2 Np + Ant OR N + Sg OR Cnjcoo ) (-1 Lpar OR Cm OR Adv) ;
+#SELECTS Vblex gerund interpreation of "writing" in "train.txt" and  "Reporting" and "Talking" in dev.txt
+
 
  
-
-
-REMOVE V + pprs IF (0 GerundVerbs)  ;
-
-
-SELECT Pr IF (-1 N OR V) (0 Adv OR Pr OR Cnjadv) (1 N Or NP + Ant) ;
-
 
