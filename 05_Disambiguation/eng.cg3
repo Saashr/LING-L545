@@ -1,0 +1,63 @@
+DELIMITERS = "." , "!" , "?" ;  
+
+LIST Pr = pr ;                  
+LIST Cm = cm ;                  
+LIST Num = num ;               
+LIST Abbr = abbr ;              
+
+LIST V = vblex ;                
+LIST N = n ;                   
+LIST A = adj ;                  
+LIST Sg = sg ;                  
+LIST Prn = prn ;              
+LIST Det = det ;                
+LIST Def = def ;                
+LIST Adv = adv ;                
+LIST Pl = pl ;                
+LIST Past = past ;              
+LIST PP = pp ;                 
+LIST Pres = pres ;
+LIST Cnjadv = Cnjadv ;            
+
+LIST Sg1 = (p1 sg) ;         
+LIST Sg2 = (p2 sg) ;           
+LIST Sg3 = (p3 sg) ;        
+LIST Pl1 = (p1 pl) ;        
+LIST Pl2 = (p2 pl) ;           
+LIST Pl3 = (p3 pl) ;          
+
+LIST Have = "have" ;           
+LIST By = "by" ;              
+LIST Be = "be" ;             
+LIST Modal = "can", "would", "could", "should" ;
+
+LIST Ind = ind ;               
+LIST Qnt = qnt ;                
+
+LIST pprs = pprs ;
+LIST subs = subs ;
+
+LIST NP = np ;                  
+LIST Ant = ant ;   
+LIST CnjCoo = "and", "but", "or";  # 
+LIST CnjSub = "because", "that", "if";
+
+LIST Ger = ger ;                
+SET Finite = Past | Pres ;      
+
+
+LIST GerundVerbs = "talk" "report" "write" ;
+
+SELECT V + Ger IF (0 GerundVerbs) (-1* Pr) (-2* NP + Ant) ;
+SELECT V + Ger IF (0 GerundVerbs) (1 Pr) (2 Det) ;           
+SELECT V + Ger IF (0 GerundVerbs) (-1* CnjCoo) (1 CnjSub) ;
+
+ 
+
+
+REMOVE V + pprs IF (0 GerundVerbs)  ;
+
+
+SELECT Pr IF (-1 N OR V) (0 Adv OR Pr OR Cnjadv) (1 N Or NP + Ant) ;
+
+
